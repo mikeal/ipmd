@@ -60,7 +60,7 @@ const build = async argv => {
       filename = filename.slice(0, filename.length - '.md'.length) + '.html'
     }
     await mkdirp(filename.slice(0, filename.lastIndexOf('/')))
-    const parsed = fm.loadFront(buff)
+    const parsed = fm.safeLoadFront(buff)
     console.log(markdown(parsed.__content))
     const html = sanitize(markdown(parsed.__content))
     await fs.writeFile(filename, html)
