@@ -1,0 +1,21 @@
+{
+  "name": "interblog",
+  "version": "0.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Mikeal Rogers <mikeal.rogers@gmail.com> (https://www.mikealrogers.com/)",
+  "license": "(Apache-2.0 AND MIT)",
+  "dependencies": {
+    "mkdirp": "^1.0.4",
+    "sanitize-html": "^1.27.4",
+    "showdown": "^1.9.1",
+    "st": "^2.0.0",
+    "yaml-front-matter": "^4.1.0",
+    "yargs": "^16.0.3"
+  }
+}
