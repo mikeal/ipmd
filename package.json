@@ -16,6 +16,7 @@
     "mkdirp": "^1.0.4",
     "nanohtml": "^1.9.1",
     "pretty": "^2.0.0",
+    "prompt-promise": "^1.0.3",
     "sanitize-html": "^1.27.4",
     "showdown": "^1.9.1",
     "st": "^2.0.0",

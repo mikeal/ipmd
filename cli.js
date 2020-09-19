@@ -2,12 +2,20 @@
 import yargs from 'yargs'
 import st from 'st'
 import http from 'http'
+import init from './src/init.js'
 import { hideBin } from 'yargs/helpers'
 import { build } from './src/index.js'
 
 const testOptions = yargs => {
   yargs.option('dev', {
     description: 'Run dev server after running the test.'
+  })
+}
+
+const initOptions = yargs => {
+  yargs.positional('cwd', {
+    description: 'Directory to initialize in',
+    default: process.cwd()
   })
 }
 
@@ -21,6 +29,7 @@ const mkhandler = async (cmd, argv) => {
 }
 
 yargs(hideBin(process.argv))
+.command('init [cwd]', 'Initialize intersite.', initOptions, init)
 .command('build [source] [dist]', 'Various test commands', yargs => {
   yargs.positional('source', {
     description: 'Directory to build site from',
