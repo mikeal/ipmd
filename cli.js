@@ -14,7 +14,7 @@ const testOptions = yargs => {
 const mkhandler = async (cmd, argv) => {
   await cmd(argv)
   if (argv.dev) {
-   http.createServer(st({ path: process.cwd(), cache: false, cors: true })).listen(8080, () => {
+   http.createServer(st({ path: argv.dist, index: true, cache: false, cors: true })).listen(8080, () => {
       console.log('listening http://localhost:8080')
     })
   }
