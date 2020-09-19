@@ -7,12 +7,12 @@ You can publish markdown content as well as structured data
 attached to each page. You can also follow and repost pages
 from other sites into your "feed."
 
-IPMD is like a hybrid between a blog, personal wiki, and social
-network like twitter or facebook.
+IPMD is like a hybrid between a blog, personal wiki, a social
+network like twitter or facebook, and an old fashioned *webring*.
 
 You can create new pages wherever you like on your site. These
 pages are published as soon as you push them to GitHub. You can
-then decide to broadcast the publishing or updated of each
+then decide to broadcast the creation or update of any
 page to your "feed."
 
 You can also follow other IPMD sites. GitHub Actions will pull
