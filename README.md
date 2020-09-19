@@ -21,12 +21,21 @@ a unified feed of all the sites you follow.
 
 ## Setup
 
-First, create a git repository.
+First, create a git repository locally and on GitHub.
 
 ```
 $ mkdir newsite
 $ git init
+$ git remote add origin https://github.com/{username}/{repo}.git
 ```
+
+You need to have a repository that has its remote origin set because
+we need to use GitHub's LFS service as a block store for your site's
+database.
+
+We'll also end up using GitHub Actions for building and publishing
+your site and for regularly pulling the feeds of the sites that
+you follow.
 
 Next, initialize IPMD.
 
@@ -40,7 +49,7 @@ in a local `.auth` file. Several other base files will be created, including a
 make sure you avoid checking in the `.auth` file since it contains you private
 authentication token.
 
-Finally, you'll need to check everthing in for it to be published.
+Finally, you'll need to check everthing in infor it to be published.
 
 ```
 $ git add -A
