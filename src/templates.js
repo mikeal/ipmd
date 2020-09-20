@@ -21,18 +21,31 @@ sanitize.defaults.allowedAttributes = {
   ...sanitize.defaults.allowedAttributes
 }
 
+const converterOptions = {
+  simplifiedAutoLink: true,
+  ghCompatibleHeaderId: true,
+  parseImgDimensions: true,
+  excludeTrailingPunctuationFromURLs: true,
+  literalMidWordUnderscores: true,
+  strikethrough: true,
+  tables: true,
+  tasklists: true,
+  disableForced4SpacesIndentedSublists: true
+}
+
 const markdown = str => {
-  const converter = new showdown.Converter()
+  const converter = new showdown.Converter(converterOptions)
   return converter.makeHtml(str)
 }
 
 const head = (title, base) => html`
   <head>
     <meta charset="utf-8"/>
-    <script src="${base}app.js" type="module"></script>
     <link rel="stylesheet" href="${base}style.css">
   </head>
 `
+
+const sidebar = parsed => ''
 
 const page = async (parsed, base='/') => {
   const buffers = []
@@ -45,11 +58,12 @@ const page = async (parsed, base='/') => {
     ${ head(parsed.title, base) }
     <body>
       <sidebar>
-        <p>Sidebar Goes Here</p>
+        ${ sidebar(parsed, base) }
       </sidebar>
       <content>
         ${ raw(content) }
       </content>
+      <script src="${base}app.js" type="module"></script>
   </html>`
 }
 

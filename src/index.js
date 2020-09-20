@@ -12,7 +12,8 @@ const md = filename => filename.endsWith('.md')
 const ignore = [
   'node_modules',
   'package.json',
-  'package-lock.json'
+  'package-lock.json',
+  'blockstore.ipld-lfs'
 ]
 
 const tree = async function * (path, dist, orig, filter=md) {
@@ -56,6 +57,15 @@ const writeHTML = async (dist, key, parsed) => {
   await fs.writeFile(filename, pretty(html.toString()))
 }
 
+const writeDefaults = dist => {
+  const files = [ 'app.js', 'style.css' ]
+  return Promise.all(files.map(f => {
+    const url = new URL('../' + f, import.meta.url)
+    console.log('seed', dist + '/' + f)
+    return fs.copyFile(url, dist + '/' + f)
+  }))
+}
+
 const toIter = buff => fixed(Object.values([buff]), 1024 * 1000)
 
 const build = async argv => {
@@ -63,6 +73,7 @@ const build = async argv => {
   let { source, dist } = argv
   source = resolve(source)
   dist = resolve(dist)
+  await writeDefaults(dist)
   let promises = []
   for await (let filename of tree(source, dist, source)) {
     const buff = await fs.readFile(filename)

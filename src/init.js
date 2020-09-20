@@ -39,8 +39,20 @@ const createDatabase = async cwd => {
     if (e.code !== 'ENOENT') throw e
     throw new Error('Target directory must be the top level of a git repository')
   }
+  try {
+    info = await fs.stat(cwd + '/' + 'root.cid')
+    return console.log('Database already created, skipping DB creation.')
+  } catch (e) {
+    if (e.code !== 'ENOENT') throw e
+  }
   await loadAuth(cwd)
-  const db = await dagdb.create('github-action')
+  console.log('Creating database.')
+  let db = await dagdb.create('github-action')
+  const site = await db.empty()
+  const following = site
+  await db.set({site, following})
+  db = await db.update()
+  return db
 }
 
 const init = async argv => {
