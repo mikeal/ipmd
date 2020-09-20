@@ -4,6 +4,9 @@
   "description": "InterPlanetary MarkDown++",
   "main": "src/index.js",
   "type": "module",
+  "bin": {
+    "ipmd": "./cli.js"
+  },
   "scripts": {
     "test": "standard"
   },
