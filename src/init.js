@@ -66,7 +66,7 @@ const init = async argv => {
       if (base.isDirectory()) {
         if (!local) await mkdirp(dest)
         const _files = await fs.readdir(url)
-        return writeFiles(_files.map(f => filename + '/' + f))
+        return writeFiles(_files.map(f => filename + '/' + f), dist)
       } else {
         if (local) return console.log('skipping, already exits:', filename)
         console.log('write', filename)

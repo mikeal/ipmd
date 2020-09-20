@@ -71,6 +71,7 @@ const toIter = buff => fixed(Object.values([buff]), 1024 * 1000)
 const build = async argv => {
   let db = await dagdb.create('inmem')
   let { source, dist } = argv
+  await mkdirp(dist)
   source = resolve(source)
   dist = resolve(dist)
   await writeDefaults(dist)
