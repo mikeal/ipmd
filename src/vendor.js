@@ -1,6 +1,6 @@
+/*
 import esinstall from 'esinstall'
 
-/*
 interface InstallOptions {
     cwd: string;
     alias: Record<string, string>;

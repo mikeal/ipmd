@@ -22,24 +22,25 @@ const initOptions = yargs => {
 const mkhandler = async (cmd, argv) => {
   await cmd(argv)
   if (argv.dev) {
-   http.createServer(st({ path: argv.dist, index: true, cache: false, cors: true })).listen(8080, () => {
+    http.createServer(st({ path: argv.dist, index: true, cache: false, cors: true })).listen(8080, () => {
       console.log('listening http://localhost:8080')
     })
   }
 }
 
+// eslint-disable-next-line
 yargs(hideBin(process.argv))
-.command('init [cwd]', 'Initialize intersite.', initOptions, init)
-.command('build [source] [dist]', 'Various test commands', yargs => {
-  yargs.positional('source', {
-    description: 'Directory to build site from',
-    default: process.cwd()
-  })
-  yargs.positional('dist', {
-    description: 'Directory to write html',
-    default: 'dist'
-  })
-  testOptions(yargs)
-}, argv => mkhandler(build, argv))
-.help()
-.argv
+  .command('init [cwd]', 'Initialize intersite.', initOptions, init)
+  .command('build [source] [dist]', 'Various test commands', yargs => {
+    yargs.positional('source', {
+      description: 'Directory to build site from',
+      default: process.cwd()
+    })
+    yargs.positional('dist', {
+      description: 'Directory to write html',
+      default: 'dist'
+    })
+    testOptions(yargs)
+  }, argv => mkhandler(build, argv))
+  .help()
+  .argv

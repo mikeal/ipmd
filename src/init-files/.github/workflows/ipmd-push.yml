@@ -1,0 +1,13 @@
+on: [push]
+
+jobs:
+  ipmd-on-push:
+    runs-on: ubuntu-latest
+    name: IPMD on Push
+    steps:
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: ipmd action push
+        run: npm_config_yes=true npx ipmd@latest action push

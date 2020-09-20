@@ -9,7 +9,7 @@ sanitize.defaults.allowedTags = [
   ...sanitize.defaults.allowedTags
 ]
 
-const attrs = [ 'id' ]
+const attrs = ['id']
 
 sanitize.defaults.allowedAttributes = {
   h1: attrs,
@@ -47,7 +47,7 @@ const head = (title, base) => html`
 
 const sidebar = parsed => ''
 
-const page = async (parsed, base='/') => {
+const page = async (parsed, base = '/') => {
   const buffers = []
   for await (const buff of parsed.__content) {
     buffers.push(buff)
@@ -55,13 +55,13 @@ const page = async (parsed, base='/') => {
   const str = (new TextDecoder()).decode(Buffer.concat(buffers))
   const content = sanitize(markdown(str))
   return html`<html>
-    ${ head(parsed.title, base) }
+    ${head(parsed.title, base)}
     <body>
       <sidebar>
-        ${ sidebar(parsed, base) }
+        ${sidebar(parsed, base)}
       </sidebar>
       <content>
-        ${ raw(content) }
+        ${raw(content)}
       </content>
       <script src="${base}app.js" type="module"></script>
   </html>`

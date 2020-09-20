@@ -1,11 +1,11 @@
 {
-  "name": "interblog",
-  "version": "0.0.0",
-  "description": "",
+  "name": "ipmd",
+  "version": "0.0.0-dev",
+  "description": "InterPlanetary MarkDown++",
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "standard"
   },
   "keywords": [],
   "author": "Mikeal Rogers <mikeal.rogers@gmail.com> (https://www.mikealrogers.com/)",
@@ -22,5 +22,8 @@
     "st": "^2.0.0",
     "yaml-front-matter": "^4.1.0",
     "yargs": "^16.0.3"
+  },
+  "devDependencies": {
+    "standard": "^14.3.4"
   }
 }

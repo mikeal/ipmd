@@ -16,7 +16,7 @@ const ignore = [
   'blockstore.ipld-lfs'
 ]
 
-const tree = async function * (path, dist, orig, filter=md) {
+const tree = async function * (path, dist, orig, filter = md) {
   path = path.toString()
   for (const filename of ignore) {
     if (path === filename || path.endsWith('/' + filename)) return
@@ -58,7 +58,7 @@ const writeHTML = async (dist, key, parsed) => {
 }
 
 const writeDefaults = dist => {
-  const files = [ 'app.js', 'style.css' ]
+  const files = ['app.js', 'style.css']
   return Promise.all(files.map(f => {
     const url = new URL('../' + f, import.meta.url)
     console.log('seed', dist + '/' + f)
@@ -75,7 +75,7 @@ const build = async argv => {
   dist = resolve(dist)
   await writeDefaults(dist)
   let promises = []
-  for await (let filename of tree(source, dist, source)) {
+  for await (const filename of tree(source, dist, source)) {
     const buff = await fs.readFile(filename)
     const key = filename.slice(source.length + 1)
     const parsed = fm.safeLoadFront(buff)
