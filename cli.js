@@ -4,6 +4,7 @@ import st from 'st'
 import http from 'http'
 import init from './src/init.js'
 import { hideBin } from 'yargs/helpers'
+import { push, cron } from './src/actions.js'
 import { build } from './src/index.js'
 
 const testOptions = yargs => {
@@ -42,5 +43,9 @@ yargs(hideBin(process.argv))
     })
     testOptions(yargs)
   }, argv => mkhandler(build, argv))
+  .command('action', 'GitHub Actions', yargs => {
+    yargs.command('push', 'Action for "push" event', () => {}, push)
+    yargs.command('cron', 'Action for regular interval', () => {}, cron)
+  })
   .help()
   .argv
