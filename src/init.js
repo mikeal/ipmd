@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs'
 import prompt from 'prompt-promise'
 import mkdirp from 'mkdirp'
-import dagdb from '../../dagdb/src/index.js'
+import dagdb from 'dagdb'
 
 const stat = async (filename, dest) => {
   let local = null

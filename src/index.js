@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs'
 import { resolve } from 'path'
 import pretty from 'pretty'
-import dagdb from '../../dagdb/src/index.js'
+import dagdb from 'dagdb'
 import mkdirp from 'mkdirp'
 import fm from 'yaml-front-matter'
 import * as templates from './templates.js'
