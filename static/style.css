@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Oxygen:wght@300;400;700&family=Questrial&display=swap');
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+}
+
+* {
+  font-family: 'Oxygen', sans-serif;
+  color: #4D5054;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 20vw 80vw;
+  grid-template-rows: 2em auto;
+  grid-template-areas:
+    "header-row header-row"
+    "sidebar content";
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    grid-template-columns: 0vw 100vw;
+    grid-template-rows: 2em auto;
+  }
+  sidebar {
+    display: none;
+  }
+}
+
+header-row {
+  grid-area: header-row;
+}
+
+sidebar {
+  grid-area: sidebar;
+}
+
+content {
+  grid-area: content;
+}
+
+pre, code {
+  font-family: 'Inconsolata', monospace;
+  background-color: #E9EDF3;
+}
+
+h1 {
+  font-family: 'Questrial';
+  font-size: 50;
+}
+
+h2 {
+  font-size: 36;
+}
+h3 {
+  font-size: 30;
+}
+h4 {
+  font-size: 28;
+}
+h5 {
+  font-fize: 22;
+}
+p {
+  font-size: 18;
+}
+
+a {
+  color: 1D74F2;
+}

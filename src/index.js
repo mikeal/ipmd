@@ -57,10 +57,12 @@ const writeHTML = async (dist, key, parsed) => {
   await fs.writeFile(filename, pretty(html.toString()))
 }
 
-const writeDefaults = dist => {
-  const files = ['app.js', 'style.css']
+const writeDefaults = async dist => {
+  dist = dist += '/static'
+  await fs.mkdir(dist).catch(() => {})
+  const files = await fs.readdir(new URL('../static', import.meta.url))
   return Promise.all(files.map(f => {
-    const url = new URL('../' + f, import.meta.url)
+    const url = new URL('../static/' + f, import.meta.url)
     console.log('seed', dist + '/' + f)
     return fs.copyFile(url, dist + '/' + f)
   }))

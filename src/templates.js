@@ -41,7 +41,7 @@ const markdown = str => {
 const head = (title, base) => html`
   <head>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" href="${base}style.css">
+    <link rel="stylesheet" href="${base}static/style.css">
   </head>
 `
 
@@ -63,7 +63,7 @@ const page = async (parsed, base = '/') => {
       <content>
         ${raw(content)}
       </content>
-      <script src="${base}app.js" type="module"></script>
+      <script src="${base}static/app.js" type="module"></script>
   </html>`
 }
 
